@@ -1,11 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="myFirstApp" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hello Coursera</title>
+
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
 </head>
 <body>
     <h1>Hello Coursera</h1>
+    <h3>My First Controller</h3>
+    <div ng-controller="MyFirstController">
+        {{sayHello()}}
+        <input type="text" ng-model="name"> <!-- IF the data(NAME on the input) changes the actual data(name variable in the scope also changes) -->
+        <div>
+            Inside my input is: {{name}}
+        </div>
+    </div>
+    <br>
+
+    <h3>Using Dependency Injection(DI)</h3>
+    <div ng-controller="DIController">
+        <input type="text" ng-model="name" ng-blur="upper();">
+    </div>
+
+    <h3>Expressions and Interpolation</h3>
+    <div ng-controller="MsgController">
+        {{name}} has a message for you: <br>
+        {{dakdoakdoa}} <!--It returns a error and it outputs nothing-->
+        {{sayMessage()}} <!-- ({{}}) <- THIS IS A EXPRESSION -->
+        <div>
+            <button ng-click="changeMood()">Change Mood</button>
+            <br>
+            <img ng-src="/images/{{state}}.png"> <!-- If its only set to the src it gives a 404 error becouse the html runs first then the angular is ready  -->
+        </div>
+    </div>
 </body>
 </html>
